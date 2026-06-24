@@ -1,4 +1,4 @@
-For the general idea of extracting selective modules from any Claude Code skill, see [this gist](https://gist.github.com/yuan-phd/af7370e77aac862e6bf2b07804e4ae95).
+For the general idea of extracting selective modules from any Claude Code skill, see [this gist: Selective Module Extraction from Claude Code Skills](https://gist.github.com/yuan-phd/af7370e77aac862e6bf2b07804e4ae95).
 
 # Using Only the Compression Module
 
