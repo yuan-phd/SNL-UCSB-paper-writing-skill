@@ -1,6 +1,6 @@
 For the general idea of extracting selective modules from any Claude Code skill, see this gist: [Selective Module Extraction from Claude Code Skills](https://gist.github.com/yuan-phd/af7370e77aac862e6bf2b07804e4ae95).
 
-# Using Only the Compression Module
+## Using Only the Compression Module
 
 The [SNL-UCSB paper-writing-skill](https://github.com/SNL-UCSB/paper-writing-skill) is a full pipeline (Brainstorm → Draft → Evaluate → Write → Compress). If your draft is already written and reviewed, you only need Stage 5: compression — 7 operations applied in order, targeting 30–50% reduction.
 
