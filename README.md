@@ -1,3 +1,33 @@
+For the general idea of extracting selective modules from any Claude Code skill, see [this gist](https://gist.github.com/yuan-phd/af7370e77aac862e6bf2b07804e4ae95).
+
+# Using Only the Compression Module
+
+The [SNL-UCSB paper-writing-skill](https://github.com/SNL-UCSB/paper-writing-skill) is a full pipeline (Brainstorm → Draft → Evaluate → Write → Compress). If your draft is already written and reviewed, you only need Stage 5: compression — 7 operations applied in order, targeting 30–50% reduction.
+
+## Minimal setup (2 files)
+
+```bash
+git clone https://github.com/SNL-UCSB/paper-writing-skill.git /tmp/paper-writing-skill
+
+mkdir -p your-project/skills/paper-writing/author_profile
+
+cp /tmp/paper-writing-skill/author_profile/compression_patterns.md \
+   your-project/skills/paper-writing/author_profile/
+```
+
+The full `SKILL.md` references ~15 files you didn't copy, creating dangling references. Ask Claude Code to produce a trimmed `SKILL.md` that keeps only the Stage 5 compression workflow and the "compress this section" command, with the single file reference `author_profile/compression_patterns.md`.
+
+```
+skills/paper-writing/
+├── SKILL.md                              # trimmed, compression-only
+└── author_profile/
+    └── compression_patterns.md           # verbatim from upstream
+```
+
+Zero dangling references. Claude Code discovers it as a project skill and applies the 7 compression operations when you say "compress section 4."
+
+---
+
 # paper-writing-skill
 
 PhD students know what they found. Turning that into a paper that gets accepted is where they stall. The problem isn't writing ability — it's operational friction. Structuring sections, maintaining cross-section coherence, compressing to page limits, matching voice conventions, synthesizing figures, responding to reviewers: students spend weeks on scaffolding that an experienced advisor could sketch in an afternoon.
