@@ -4,6 +4,22 @@ For the general idea of extracting selective modules from any Claude Code skill,
 
 The [SNL-UCSB paper-writing-skill](https://github.com/SNL-UCSB/paper-writing-skill) is a full pipeline (Brainstorm → Draft → Evaluate → Write → Compress). If your draft is already written and reviewed, you only need Stage 5: compression — 7 operations applied in order, targeting 30–50% reduction.
 
+## Prompt template
+
+One Claude Code prompt handles cloning, copying, trimming, and verification:
+
+```
+Clone <repo-url> to /tmp/. Read its SKILL.md and identify only the files
+referenced by <stage/module name>. Copy those files into ./skills/<skill-name>/,
+preserving directory structure. Then produce a trimmed SKILL.md that:
+- keeps only the <stage/module> workflow and its commands
+- references only the files you copied
+- has zero dangling references
+Verify by checking every file path in the trimmed SKILL.md resolves to an existing file.
+```
+
+Replace `<repo-url>`, `<stage/module name>`, and `<skill-name>` with your specifics.
+
 ## Minimal setup (2 files)
 
 ```bash
